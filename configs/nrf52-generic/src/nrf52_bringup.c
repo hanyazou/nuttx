@@ -1,5 +1,5 @@
 /****************************************************************************
- * config/nrf52-pca10040/src/nrf53_bringup.c
+ * config/nrf52-generic/src/nrf53_bringup.c
  *
  *   Copyright (C) 2018 Gregory Nutt. All rights reserved.
  *   Author: Gregory Nutt <gnutt@nuttx.org>

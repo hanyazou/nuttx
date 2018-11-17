@@ -1,5 +1,5 @@
 /****************************************************************************
- * configs/nrf52-pca10040/src/lpc43_autoleds.c
+ * configs/nrf52-generic/src/lpc43_autoleds.c
  *
  *   Copyright (C) 2018 Gregory Nutt. All rights reserved.
  *   Author: Gregory Nutt <gnutt@nuttx.org>
@@ -61,7 +61,7 @@
 #include "up_arch.h"
 #include "up_internal.h"
 
-#include "nrf52-pca10040.h"
+#include "nrf52-generic.h"
 
 #ifdef CONFIG_ARCH_LEDS
 

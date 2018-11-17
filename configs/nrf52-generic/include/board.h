@@ -1,5 +1,5 @@
 /****************************************************************************
- * configs/nrf52-pca10040/include/board.h
+ * configs/generic/include/board.h
  *
  *   Copyright (C) 2018 Gregory Nutt. All rights reserved.
  *   Author:  Janne Rosberg <janne@offcode.fi>
@@ -33,8 +33,8 @@
  *
  ****************************************************************************/
 
-#ifndef _CONFIGS_NRF52_PCA10040_INCLUDE_BOARD_H
-#define _CONFIGS_NRF52_PCA10040_INCLUDE_BOARD_H
+#ifndef _CONFIGS_NRF52_GENERIC_INCLUDE_BOARD_H
+#define _CONFIGS_NRF52_GENERIC_INCLUDE_BOARD_H
 
 /****************************************************************************
  * Included Files
@@ -121,4 +121,4 @@
 #define BOARD_UART0_RX_PIN  (GPIO_INPUT  | GPIO_PIN23)
 #define BOARD_UART0_TX_PIN  (GPIO_OUTPUT | GPIO_VALUE_ONE | GPIO_PIN24)
 
-#endif  /* _CONFIGS_NRF52_PCA10040_INCLUDE_BOARD_H */
+#endif  /* _CONFIGS_NRF52_GENERIC_INCLUDE_BOARD_H */

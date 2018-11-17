@@ -1,5 +1,5 @@
 /****************************************************************************
- * configs/nrf52-pca10040/src/lpc4357-evb.h
+ * configs/nrf52-generic/src/lpc4357-evb.h
  *
  *   Copyright (C) 2018 Gregory Nutt. All rights reserved.
  *   Author: Gregory Nutt <gnutt@nuttx.org>
@@ -33,8 +33,8 @@
  *
  ****************************************************************************/
 
-#ifndef _CONFIGS_NRF52PCA10040_SRC_NRF52PCA10040_H
-#define _CONFIGS_NRF52PCA10040_SRC_NRF52PCA10040_H
+#ifndef _CONFIGS_NRF52GENERIC_SRC_NRF52GENERIC_H
+#define _CONFIGS_NRF52GENERIC_SRC_NRF52GENERIC_H
 
 /****************************************************************************
  * Included Files
@@ -111,4 +111,4 @@
 int nrf52_bringup(void);
 
 #endif /* __ASSEMBLY__ */
-#endif /* _CONFIGS_NRF52PCA10040_SRC_NRF52PCA10040_H */
+#endif /* _CONFIGS_NRF52GENERIC_SRC_NRF52GENERIC_H */
