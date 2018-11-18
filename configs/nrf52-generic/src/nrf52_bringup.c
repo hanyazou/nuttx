@@ -42,7 +42,13 @@
 #include <sys/types.h>
 #include <syslog.h>
 
-#include "nrf52_wdt.h"
+#ifdef CONFIG_NRF52_WDT
+#  include "nrf52_wdt.h"
+#endif
+
+#ifdef CONFIG_USERLED
+#  include <nuttx/leds/userled.h>
+#endif
 
 /****************************************************************************
  * Public Functions
@@ -73,6 +79,16 @@ int nrf52_bringup(void)
   if (ret < 0)
     {
       syslog(LOG_ERR, "ERROR: nrf52_wdt_initialize failed: %d\n", ret);
+    }
+#endif
+
+#ifdef CONFIG_USERLED
+  /* Register the LED driver */
+
+  ret = userled_lower_initialize(CONFIG_EXAMPLES_LEDS_DEVPATH);
+  if (ret < 0)
+    {
+      syslog(LOG_ERR, "ERROR: userled_lower_initialize() failed: %d\n", ret);
     }
 #endif
 

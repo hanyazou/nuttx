@@ -66,7 +66,7 @@
 #define BOARD_LED2        1
 #define BOARD_LED3        2
 #define BOARD_LED4        3
-#define BOARD_NLEDS       4
+#define BOARD_NLEDS       CONFIG_NRF52_GENERIC_NUM_LEDS
 
 /* LED bits for use with board_userled_all() */
 

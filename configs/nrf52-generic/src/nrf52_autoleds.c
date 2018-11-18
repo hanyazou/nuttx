@@ -65,6 +65,14 @@
 
 #ifdef CONFIG_ARCH_LEDS
 
+#ifdef CONFIG_NRF52_GENERIC_LED_ACTIVELOW
+#define LED_ON 0
+#define LED_OFF 1
+#else
+#define LED_ON 1
+#define LED_OFF 0
+#endif
+
 /****************************************************************************
  * Private Functions
  ****************************************************************************/
@@ -97,10 +105,18 @@ void board_autoled_initialize(void)
 
   led_dumppins("board_autoled_initialize() Entry)");
 
+#if 0 < BOARD_NLEDS
   nrf52_gpio_config(GPIO_LED1);
+#endif
+#if 1 < BOARD_NLEDS
   nrf52_gpio_config(GPIO_LED2);
+#endif
+#if 2 < BOARD_NLEDS
   nrf52_gpio_config(GPIO_LED3);
+#endif
+#if 3 < BOARD_NLEDS
   nrf52_gpio_config(GPIO_LED4);
+#endif
 
   led_dumppins("board_autoled_initialize() Exit");
 }
@@ -115,19 +131,27 @@ void board_autoled_on(int led)
     {
       default:
       case 0:
-        nrf52_gpio_write(GPIO_LED1, 0);
+#if 0 < BOARD_NLEDS
+        nrf52_gpio_write(GPIO_LED1, LED_ON);
+#endif
         break;
 
       case 1:
-        nrf52_gpio_write(GPIO_LED2, 0);
+#if 1 < BOARD_NLEDS
+        nrf52_gpio_write(GPIO_LED2, LED_ON);
+#endif
         break;
 
       case 2:
-        nrf52_gpio_write(GPIO_LED3, 0);
+#if 2 < BOARD_NLEDS
+        nrf52_gpio_write(GPIO_LED3, LED_ON);
+#endif
         break;
 
       case 3:
-        nrf52_gpio_write(GPIO_LED4, 0);
+#if 3 < BOARD_NLEDS
+        nrf52_gpio_write(GPIO_LED4, LED_ON);
+#endif
         break;
     }
 }
@@ -142,19 +166,27 @@ void board_autoled_off(int led)
     {
       default:
       case 0:
-        nrf52_gpio_write(GPIO_LED1, 1);
+#if 0 < BOARD_NLEDS
+        nrf52_gpio_write(GPIO_LED1, LED_OFF);
+#endif
         break;
 
       case 1:
-        nrf52_gpio_write(GPIO_LED2, 1);
+#if 1 < BOARD_NLEDS
+        nrf52_gpio_write(GPIO_LED2, LED_OFF);
+#endif
         break;
 
       case 2:
-        nrf52_gpio_write(GPIO_LED3, 1);
+#if 2 < BOARD_NLEDS
+        nrf52_gpio_write(GPIO_LED3, LED_OFF);
+#endif
         break;
 
       case 3:
-        nrf52_gpio_write(GPIO_LED4, 1);
+#if 3 < BOARD_NLEDS
+        nrf52_gpio_write(GPIO_LED4, LED_OFF);
+#endif
         break;
     }
 }

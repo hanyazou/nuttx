@@ -22,15 +22,6 @@ Status
 PCA10040 board
 ==============
 
-  Memory Map
-  ----------
-
-  Block                 Start      Length
-  Name                  Address
-  --------------------- ---------- ------
-  FLASH                 0x00000000   512K
-  RAM                   0x20000000    64K
-
   Console
   -------
 
@@ -60,6 +51,42 @@ PCA10040 board
   Pushbuttons
   -----------
   To be provided
+
+Feather nRF52 board
+===================
+
+  https://www.adafruit.com/product/3406
+
+  Console
+  -------
+  The Feather nRF52 default console is the UART0.
+
+  The Feather nRF52 have USB serial bridge chip on board and UART0 is
+  connected to micro USB connector through the bridge chip.
+
+  LEDs
+  ----
+  The Feather has 2 user-controllable LEDs
+
+    LED   MCU
+    LED1  PIN-17
+    LED2  PIN-19
+
+  A high output illuminates the LED.
+
+  Pushbuttons
+  -----------
+  The Feather nRF52 does not have user-controllable buttons. The reset button
+  on the board is connected to nRF52832 reset pin directly.
+
+Memory Map
+==========
+
+  Block                 Start      Length
+  Name                  Address
+  --------------------- ---------- ------
+  FLASH                 0x00000000   512K
+  RAM                   0x20000000    64K
 
 Configurations
 ==============

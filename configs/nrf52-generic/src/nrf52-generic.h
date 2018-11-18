@@ -50,27 +50,12 @@
  ****************************************************************************/
 
 /* LED definitions **********************************************************/
-/* The PCA10040 has 4 user-controllable LEDs
- *
- *  ---- ------- -------------
- *  LED  SIGNAL  MCU
- *  ---- ------- -------------
- *  LED1         GPIO 17
- *  LED2         GPIO 18
- *  LED3         GPIO 19
- *  LED4         GPIO 20
- *  ---- ------- -------------
- *
- * A low output illuminates the LED.
- *
- */
-
 /* Definitions to configure LED GPIO as outputs */
 
-#define GPIO_LED1  (GPIO_OUTPUT | GPIO_VALUE_ONE | GPIO_PIN17)
-#define GPIO_LED2  (GPIO_OUTPUT | GPIO_VALUE_ONE | GPIO_PIN18)
-#define GPIO_LED3  (GPIO_OUTPUT | GPIO_VALUE_ONE | GPIO_PIN19)
-#define GPIO_LED4  (GPIO_OUTPUT | GPIO_VALUE_ONE | GPIO_PIN20)
+#define GPIO_LED1  (GPIO_OUTPUT | GPIO_VALUE_ONE | GPIO_PIN(CONFIG_NRF52_GENERIC_LED1_PIN))
+#define GPIO_LED2  (GPIO_OUTPUT | GPIO_VALUE_ONE | GPIO_PIN(CONFIG_NRF52_GENERIC_LED2_PIN))
+#define GPIO_LED3  (GPIO_OUTPUT | GPIO_VALUE_ONE | GPIO_PIN(CONFIG_NRF52_GENERIC_LED3_PIN))
+#define GPIO_LED4  (GPIO_OUTPUT | GPIO_VALUE_ONE | GPIO_PIN(CONFIG_NRF52_GENERIC_LED4_PIN))
 
 /* Button definitions *******************************************************/
 /* Board supports four buttons. */

@@ -53,6 +53,14 @@
 
 #ifndef CONFIG_ARCH_LEDS
 
+#ifdef CONFIG_NRF52_GENERIC_LED_ACTIVELOW
+#define LED_ON 0
+#define LED_OFF 1
+#else
+#define LED_ON 1
+#define LED_OFF 0
+#endif
+
 /****************************************************************************
  * Pre-processor Definitions
  ****************************************************************************/
@@ -101,10 +109,18 @@ void board_userled_initialize(void)
 
   /* Configure GPIO as an outputs */
 
+#if 0 < BOARD_NLEDS
   nrf52_gpio_config(GPIO_LED1);
+#endif
+#if 1 < BOARD_NLEDS
   nrf52_gpio_config(GPIO_LED2);
+#endif
+#if 2 < BOARD_NLEDS
   nrf52_gpio_config(GPIO_LED3);
+#endif
+#if 3 < BOARD_NLEDS
   nrf52_gpio_config(GPIO_LED4);
+#endif
 
   led_dumppins("board_userled_initialize() Exit");
 }
@@ -115,10 +131,26 @@ void board_userled_initialize(void)
 
 void board_userled(int led, bool ledon)
 {
-  if (led == BOARD_LED1)
-    {
-      nrf52_gpio_write(GPIO_LED1, !ledon);
-    }
+#if 0 < BOARD_NLEDS
+  if (led == BOARD_LED1) {
+    nrf52_gpio_write(GPIO_LED1, ledon ? LED_ON : LED_OFF);
+  }
+#endif
+#if 1 < BOARD_NLEDS
+  if (led == BOARD_LED2) {
+      nrf52_gpio_write(GPIO_LED2, ledon ? LED_ON : LED_OFF);
+  }
+#endif
+#if 2 < BOARD_NLEDS
+  if (led == BOARD_LED3) {
+      nrf52_gpio_write(GPIO_LED3, ledon ? LED_ON : LED_OFF);
+  }
+#endif
+#if 3 < BOARD_NLEDS
+  if (led == BOARD_LED4) {
+      nrf52_gpio_write(GPIO_LED4, ledon ? LED_ON : LED_OFF);
+  }
+#endif
 }
 
 /****************************************************************************
@@ -127,10 +159,18 @@ void board_userled(int led, bool ledon)
 
 void board_userled_all(uint8_t ledset)
 {
-  nrf52_gpio_write(GPIO_LED1, (ledset & BOARD_LED1_BIT) == 0);
-  nrf52_gpio_write(GPIO_LED2, (ledset & BOARD_LED2_BIT) == 0);
-  nrf52_gpio_write(GPIO_LED3, (ledset & BOARD_LED3_BIT) == 0);
-  nrf52_gpio_write(GPIO_LED4, (ledset & BOARD_LED4_BIT) == 0);
+#if 0 < BOARD_NLEDS
+  nrf52_gpio_write(GPIO_LED1, (ledset & BOARD_LED1_BIT) ? LED_ON : LED_OFF);
+#endif
+#if 1 < BOARD_NLEDS
+  nrf52_gpio_write(GPIO_LED2, (ledset & BOARD_LED2_BIT) ? LED_ON : LED_OFF);
+#endif
+#if 2 < BOARD_NLEDS
+  nrf52_gpio_write(GPIO_LED3, (ledset & BOARD_LED3_BIT) ? LED_ON : LED_OFF);
+#endif
+#if 3 < BOARD_NLEDS
+  nrf52_gpio_write(GPIO_LED4, (ledset & BOARD_LED4_BIT) ? LED_ON : LED_OFF);
+#endif
 }
 
 #endif /* !CONFIG_ARCH_LEDS */
