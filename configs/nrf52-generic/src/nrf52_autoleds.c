@@ -73,6 +73,24 @@
 #define LED_OFF 0
 #endif
 
+/* This array maps an LED number to GPIO pin configuration */
+
+static const uint32_t g_ledcfg[BOARD_NLEDS] =
+{
+#if 0 < BOARD_NLEDS
+  GPIO_LED1,
+#endif
+#if 1 < BOARD_NLEDS
+  GPIO_LED2,
+#endif
+#if 2 < BOARD_NLEDS
+  GPIO_LED3,
+#endif
+#if 3 < BOARD_NLEDS
+  GPIO_LED4,
+#endif
+};
+
 /****************************************************************************
  * Private Functions
  ****************************************************************************/
@@ -101,22 +119,16 @@ static void led_dumppins(FAR const char *msg)
 
 void board_autoled_initialize(void)
 {
+  int i;
+
   /* Configure LED pin as a GPIO outputs */
 
   led_dumppins("board_autoled_initialize() Entry)");
 
-#if 0 < BOARD_NLEDS
-  nrf52_gpio_config(GPIO_LED1);
-#endif
-#if 1 < BOARD_NLEDS
-  nrf52_gpio_config(GPIO_LED2);
-#endif
-#if 2 < BOARD_NLEDS
-  nrf52_gpio_config(GPIO_LED3);
-#endif
-#if 3 < BOARD_NLEDS
-  nrf52_gpio_config(GPIO_LED4);
-#endif
+  for (i = 0; i < BOARD_NLEDS; i++)
+    {
+      nrf52_gpio_config(g_ledcfg[i]);
+    }
 
   led_dumppins("board_autoled_initialize() Exit");
 }
@@ -127,32 +139,9 @@ void board_autoled_initialize(void)
 
 void board_autoled_on(int led)
 {
-  switch (led)
+  if ((unsigned)led < BOARD_NLEDS)
     {
-      default:
-      case 0:
-#if 0 < BOARD_NLEDS
-        nrf52_gpio_write(GPIO_LED1, LED_ON);
-#endif
-        break;
-
-      case 1:
-#if 1 < BOARD_NLEDS
-        nrf52_gpio_write(GPIO_LED2, LED_ON);
-#endif
-        break;
-
-      case 2:
-#if 2 < BOARD_NLEDS
-        nrf52_gpio_write(GPIO_LED3, LED_ON);
-#endif
-        break;
-
-      case 3:
-#if 3 < BOARD_NLEDS
-        nrf52_gpio_write(GPIO_LED4, LED_ON);
-#endif
-        break;
+      nrf52_gpio_write(g_ledcfg[led], LED_ON);
     }
 }
 
@@ -162,32 +151,9 @@ void board_autoled_on(int led)
 
 void board_autoled_off(int led)
 {
-  switch (led)
+  if ((unsigned)led < BOARD_NLEDS)
     {
-      default:
-      case 0:
-#if 0 < BOARD_NLEDS
-        nrf52_gpio_write(GPIO_LED1, LED_OFF);
-#endif
-        break;
-
-      case 1:
-#if 1 < BOARD_NLEDS
-        nrf52_gpio_write(GPIO_LED2, LED_OFF);
-#endif
-        break;
-
-      case 2:
-#if 2 < BOARD_NLEDS
-        nrf52_gpio_write(GPIO_LED3, LED_OFF);
-#endif
-        break;
-
-      case 3:
-#if 3 < BOARD_NLEDS
-        nrf52_gpio_write(GPIO_LED4, LED_OFF);
-#endif
-        break;
+      nrf52_gpio_write(g_ledcfg[led], LED_OFF);
     }
 }
 
