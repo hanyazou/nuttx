@@ -5,4 +5,16 @@
 
 if ARCH_BOARD_NRF52_GENERIC
 
+config NRF52_GENERIC_UART0_RX_PIN
+	int "Pin select for UART0 TXD"
+	default 23
+	---help---
+		Pin select for UART0 TXD
+
+config NRF52_GENERIC_UART0_TX_PIN
+	int "Pin select for UART0 TXD"
+	default 24
+	---help---
+		Pin select for UART0 TXD
+
 endif
